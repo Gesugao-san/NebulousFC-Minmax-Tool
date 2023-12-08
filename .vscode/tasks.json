@@ -1,14 +1,26 @@
 {
   "version": "2.0.0",
-  "tasks": [{
-    "label": "Start live-server",
-    "type": "shell",
-    "command": "npx live-server --verbose",
-    "problemMatcher": [],
-    "group": {
-      "kind": "build",
-      "isDefault": true
+  "tasks": [
+    {
+      "label": "Start live-server",
+      "type": "shell",
+      "command": "npx live-server --verbose",
+      "problemMatcher": [],
+      "group": {
+        "kind": "build",
+        "isDefault": false
+      }
+    },
+    {
+      "label": "Start ts file",
+      "type": "shell",
+      "command": "npx ts-node \"${relativeFile}\"",
+      "problemMatcher": [],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
     }
-  }]
+  ]
 }
 

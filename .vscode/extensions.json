@@ -2,6 +2,8 @@
   "recommendations": [
     "dotjoshjohnson.xml",
     "simonsiefke.svg-preview",
-    "ritwickdey.liveserver"
+    "ritwickdey.liveserver",
+    "rpinski.shebang-snippets",
+    "ms-vscode.vscode-typescript-next"
   ]
 }
