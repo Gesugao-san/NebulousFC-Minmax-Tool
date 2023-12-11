@@ -73,13 +73,13 @@ export function inputs(missiles, point_defenses, grapher) {
   const missile_in = graph_form.elements.namedItem("missile"); // html select
   const pdt_in = graph_form.elements.namedItem("pdt"); // html select
   const stats_in = graph_form.elements.namedItem("stat"); //html select
-  for(const missile of Object.values(missiles)) {
+  for (const missile of Object.values(missiles)) {
     if(missile.name !== null && missile.name !== undefined) {
       const o = new Option(missile.name, missile.name);
       missile_in.add(o);
     }
   }
-  for(const pdt of Object.values(point_defenses)) {
+  for (const pdt of Object.values(point_defenses)) {
     if(pdt.name !== null && pdt.name !== undefined) {
       const o = new Option(pdt.name, pdt.name);
       pdt_in.add(o);
@@ -97,7 +97,7 @@ export function inputs(missiles, point_defenses, grapher) {
   stats_in.selectedIndex = 0;
 
   var selected_stats = []
-  for(var i=0; i < stats_in.selectedOptions.length; i++) {
+  for (var i = 0; i < stats_in.selectedOptions.length; i++) {
     const o = stats_in.selectedOptions.item(i);
     selected_stats.push(o.value);
   }
@@ -111,7 +111,7 @@ export function inputs(missiles, point_defenses, grapher) {
 
     populate_inputs(missile_db, pdt_db, graph_form);
     selected_stats = []
-    for(var i=0; i < stats_in.selectedOptions.length; i++) {
+    for (var i = 0; i < stats_in.selectedOptions.length; i++) {
       const o = stats_in.selectedOptions.item(i);
       selected_stats.push(o.value);
     }

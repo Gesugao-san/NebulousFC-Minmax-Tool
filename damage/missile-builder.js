@@ -34,13 +34,13 @@ export function setupMissileBuilder(weaponSelectedCB) {
   linkSlider(sizeInput, sizeSlider);
   linkSlider(terminalSpeedInput, terminalSpeedSlider);
 
-  for(const key in missileStats) {
+  for (const key in missileStats) {
     if(Object.hasOwn(missileStats, key)) {
       const o = new Option(missileStats[key].name, key);
       bodySelect.add(o);
     }
   }
-  for(const key in warheadStats) {
+  for (const key in warheadStats) {
     if(Object.hasOwn(warheadStats, key)) {
       const o = new Option(warheadStats[key].name, key);
       warheadSelect.add(o);

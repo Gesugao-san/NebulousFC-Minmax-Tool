@@ -4,7 +4,7 @@ function do_graph_internal(chosen_missile, missile_index, chosen_pd, pd_index, s
   const xs = [];
   const ys = [];
   const shots = chosen_ammo.shots_to_kill(chosen_missile);
-  for(const range of chosen_ammo.ranges(interval)) {
+  for (const range of chosen_ammo.ranges(interval)) {
     const y = stat(chosen_pd, chosen_ammo, chosen_missile, range, shots);
     if (y < 0) {
       xs.push(range);
@@ -74,7 +74,48 @@ export function do_graph(missiles, pdts, stat_fns) {
     //   y: -0.4,
     //   yanchor: 'top'
     // },
-    autosize: true
+    autosize: true,
+
+    /*
+    grid: {
+      xaxes: {
+        showgrid: true,
+        gridwidth: 10,
+        gridcolor: 'red'
+      },
+      yaxes: {
+        showgrid: true,
+        gridwidth: 10,
+        gridcolor: 'red'
+      },
+    },
+     */
+
+    font: {
+      color: 'white'
+    },
+
+    // https://github.com/plotly/plotly.js/blob/master/src/components/colorscale/scales.js#L5
+    //colorway: ['#f3cec9', '#e7a4b6', '#cd7eaf', '#a262a9', '#6f4d96', '#3d3b72', '#182844'], // https://plotly.com/javascript/colorway/
+    colorway: ['lightblue', 'lightcoral', 'lightcyan', 'lightgoldenrodyellow', 'lightgray', 'lightgreen', 'lightgrey', 'lightpink', 'lightsalmon', 'lightseagreen', 'lightskyblue', 'lightslategray', 'lightslategrey', 'lightsteelblue', 'lightyellow'], // https://github.com/bgrins/TinyColor/blob/master/npm/esm/tinycolor.js#L776
+
+
+    //line: {shape: 'spline'},
+
+    paper_bgcolor: 'rgba(0,0,0,0)',
+    //fg_color: 'white',
+    //plot_fgcolor: 'white',
+    plot_bgcolor: 'rgba(0,0,0,0)',
+    //linecolor: 'black',
+    //linecolor: 'white',
+    //gridcolor: 'red', // 'lightgrey',
+    //gridcolor: 'white',
+    //opacity: 0.5,
+    //linewidth: 3,
+    //gridlinewidth: 3,
+    //labelcolor: 'white'
+    //textcolor: 'black'
+    //textcolor: 'white'
   };
   const stat_count = stat_fns.length;
   stat_fns.forEach((stat, i) => {

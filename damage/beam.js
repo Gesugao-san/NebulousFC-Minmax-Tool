@@ -12,7 +12,7 @@ const fpa_boost = 0.25;
 export function fpa_modifier(count) {
   // IF(module_count=0, 0, SUM(MAP(MAKEARRAY(module_count,1,LAMBDA(row, col, row-1)), LAMBDA(iter, base_modifier * EXP(-POW(iter / 3.5, 2))))))
   var sum = 1;
-  for(var i = 0; i < count; i++) {
+  for (var i = 0; i < count; i++) {
     sum += fpa_boost * Math.exp(0 - Math.pow(i / 3.5, 2));
   }
   return sum;
@@ -38,7 +38,7 @@ function make_trace(fpa_count, range, damageResistance) {
 function make_dt_trace(dt, range) {
   const x = [];
   const y = [];
-  for(var i = 0; i <= range; i+=10) {
+  for (var i = 0; i <= range; i+=10) {
     x.push(i);
     y.push(dt);
   }
@@ -118,7 +118,7 @@ export function setupBeam() {
     const selectedHull = hullStats.find((hull) => hull.name === hullInput.value);
     const selectedRange = weapon.maxRange;
     var selectedComponents = []
-    for(var i=0; i < componentsInput.selectedOptions.length; i++) {
+    for (var i = 0; i < componentsInput.selectedOptions.length; i++) {
       const o = componentsInput.selectedOptions.item(i);
       const component = componentStats.find((component) => component.name === o.value);
       selectedComponents.push(component);

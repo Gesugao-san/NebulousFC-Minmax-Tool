@@ -30,15 +30,15 @@ function replaceFeeders(doc, newKey, newName) {
   const feeders50 = doc.evaluate(`//Fleet/Ships/Ship/HullType[text()='${feeder50Key}']`, doc, resolver, XPathResult.UNORDERED_NODE_SNAPSHOT_TYPE);
   const feeders48 = doc.evaluate(`//Fleet/Ships/Ship/HullType[text()='${feeder48Key}']`, doc, resolver, XPathResult.UNORDERED_NODE_SNAPSHOT_TYPE);
   const feeders46 = doc.evaluate(`//Fleet/Ships/Ship/HullType[text()='${feeder46Key}']`, doc, resolver, XPathResult.UNORDERED_NODE_SNAPSHOT_TYPE);
-  for(let i=0; i < feeders50.snapshotLength; i++) {
+  for (let i = 0; i < feeders50.snapshotLength; i++) {
     const feeder = feeders50.snapshotItem(i);
     feeder.textContent = newKey;
   }
-  for(let i=0; i < feeders48.snapshotLength; i++) {
+  for (let i = 0; i < feeders48.snapshotLength; i++) {
     const feeder = feeders48.snapshotItem(i);
     feeder.textContent = newKey;
   }
-  for(let i=0; i < feeders46.snapshotLength; i++) {
+  for (let i = 0; i < feeders46.snapshotLength; i++) {
     const feeder = feeders46.snapshotItem(i);
     feeder.textContent = newKey;
   }

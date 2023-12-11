@@ -35,7 +35,7 @@ class Missile {
 
   clone() {
     const o = {};
-    for(const p in this) {
+    for (const p in this) {
       o[p] = this[p];
     }
     return new Missile(o);
@@ -273,7 +273,7 @@ class Missile {
     const epsilon = 0.5; // 0.05 * 10
     // maxTime = 2;
 
-    for(let time=0.0; time < maxTime && distance > evasionEnd; time += delta) {
+    for (let time=0.0; time < maxTime && distance > evasionEnd; time += delta) {
       if (time >= 0.7) {
         debugger;
       }

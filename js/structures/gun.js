@@ -8,7 +8,7 @@ export default class {
   }
 
   *ranges(interval) {
-    for(var i = this.ammo.range; i >= 0; i -= interval) {
+    for (var i = this.ammo.range; i >= 0; i -= interval) {
       if (i <= 0 ) {
         break;
       }

@@ -48,7 +48,7 @@ function shipToXml(ship) {
   const SocketMap = doc.createElement("SocketMap");
   shipNode.append(SocketMap);
 
-  for(const socketId of Object.keys(ship.sockets)) {
+  for (const socketId of Object.keys(ship.sockets)) {
     const HullSocket = doc.createElement("HullSocket");
     SocketMap.append(HullSocket);
 
@@ -88,7 +88,7 @@ function shipCost(ship) {
   const compounding = {};
 
   let cost = ship.cost;
-  for(const socket of sockets) {
+  for (const socket of sockets) {
     const component = ship.sockets[socket];
     if (component !== null && component !== undefined) {
       let componentCost = component.cost;
@@ -114,7 +114,7 @@ function setupUI() {
   const editBoard = document.getElementById("ship-layout");
   const shipCostDisplay = document.getElementById("ship-cost");
 
-  for(const hull of hullStats) {
+  for (const hull of hullStats) {
     if (hull.buildable) {
       const o = new Option(hull.name, hull.name);
       newHullSelect.add(o);
@@ -240,7 +240,7 @@ function clickSocket(socket) {
     componentSelect.remove(0);
   }
 
-  for(const component of filtered) {
+  for (const component of filtered) {
     const o = new Option(component.name, component.name);
     componentSelect.add(o);
   }

@@ -94,7 +94,7 @@ class Ammo {
   }
 
   *ranges(interval) {
-    for(var i = this.max_range; i >= 0; i -= interval) {
+    for (var i = this.max_range; i >= 0; i -= interval) {
       if (i <= 0 ) {
         break;
       }

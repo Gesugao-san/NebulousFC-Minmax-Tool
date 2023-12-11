@@ -22,7 +22,7 @@ const margins = [1, 1.25, 1.5];
 function make_trace(gun, ship, margin) {
   const x = [];
   const y = [];
-  for(const range of gun.ranges(100)) {
+  for (const range of gun.ranges(100)) {
     x.push(range);
     y.push(start_moving_before(range, gun, ship, margin));
   }
@@ -90,7 +90,7 @@ export function movement_inputs() {
     const lateralThrust = thrust * selectedHull.lateralThrustModifier;
     const brakingThrust = thrust * selectedHull.brakingThrustModifier;
     var selectedAmmo = []
-    for(var i=0; i < ammoInput.selectedOptions.length; i++) {
+    for (var i = 0; i < ammoInput.selectedOptions.length; i++) {
       const o = ammoInput.selectedOptions.item(i);
       const ammo = gunStats.ammo.find((ammo) => ammo.name === o.value);
       selectedAmmo.push(ammo);
