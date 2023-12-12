@@ -1,16 +1,12 @@
 #!/usr/bin/env ts-node
 
 import type * as ts from 'typescript';
+import { gameObject } from './gameObject';
+import { TupleUnion } from './TupleUnion';
 
 
-/////////////////////////////
 
-type gameObject = {
-  /**
-   * The full name of the N:FC game object
-   */
-  name: string;
-}
+
 type gameObjectProcessor = {
   (name: string): void;
   //toJson: (number) => number; // arrow function
@@ -20,15 +16,19 @@ type gameObjectProcessor = {
 //allowedTypes = (
 type registerableObjectsTypes = (
   gameObject |
-  Hull
+  HullSchema
 );
 
 
 
 
-interface Hull extends gameObject {
-  cost: number;
+interface HullSchema extends gameObject {
+  readonly cost: number;
+  readonly keys?: Array<[HullSchema['name'], HullSchema['cost']]>;
 }
+type HullSchemaKeys = [HullSchema['name'], HullSchema['cost']];
+//type HullSchemaKeys = (keyof HullSchema)[];
+
 
 
 //type RegisteredHull = Hull[];
@@ -53,7 +53,7 @@ const multiDim: ThreadListList = [
 //let Hulls = new Array<Hull>();
 //let Hulls: string[][] = RegisteredHulls;
 //let Hulls: string[][] = new Array<RegisteredHull>();
-let Hulls2: any[][] = [];
+//let Hulls2: any[][] = [];
 
 
 
@@ -72,7 +72,10 @@ var obj2: MyGroupType = {
 
 //var RegisteredObject: Array<string> = [];
 const RegisteredObjects = new Array<gameObject>();
-const RegisteredHulls   = new Array<Hull>();
+//const RegisteredObjects2: gameObject[] = [];
+//const RegisteredObjects3: gameObject[][] = [];
+const RegisteredHulls   = new Array<HullSchema>();
+//console.log(RegisteredObjects, RegisteredObjects2, RegisteredObjects3);
 
 //let RegisteredObjects = new Array<RegisteredObject>();
 //const RegisteredObjects: RegisteredObject = [];
@@ -85,8 +88,8 @@ function registerObject(obj: gameObject): void {
   console.log('Object registered:', currObject);
   RegisteredObjects.push(currObject);
 }
-function registerHull(hull: Hull): void {
-  const currHull: Hull = hull;
+function registerHull(hull: HullSchema): void {
+  const currHull: HullSchema = hull;
   const currObject: gameObject = hull;
   registerObject(currObject);
   RegisteredHulls.push(currHull);
@@ -120,10 +123,52 @@ export default class gameObjectt {
 
 /////////////////////////////
 
+export class reger {
+  constructor() {}
+  reg(type: any, value: any) {
+    console.log(type, value);
+  }
+  regObj(value: string) {
+    console.log(value);
+  }
+}
+
+/////////////////////////////
+
 let tom = new gameObjectt("Lorem Ipsum", 36);
 tom.print();        // name: Tom  age: 36
 
-const hull1: Hull = {name: 'Lorem Ipsum 1', cost: 100222222};
-const hull2333333: Hull = {name: 'Lorem Ipsum 2111', cost: 250};
+let myReg = new reger();
+myReg.regObj('123');
+
+const hull1: HullSchema = {name: 'Lorem Ipsum 1', cost: 100222222};
+const hull2333333: HullSchema = {name: 'Lorem Ipsum 2111', cost: 250};
 
 console.log([hull1, hull2333333, RegisteredObjects]);
+
+
+function Hull(name: string, cost: number): HullSchema {
+  const tmp: HullSchema = {name: name, cost: cost}
+  //return (name, cost): Hull => {return {"name": name, "cost": cost}};
+  return tmp;
+}
+const Hulls: HullSchema[] = [
+  Hull('Lorem Ipsum 1', 100),
+  Hull('Lorem Ipsum 2', 250),
+];
+/// keyof Hull
+//const Hulls2: [HullSchema['name'], HullSchema['cost']][] = [
+//const Hulls2: HullSchema['keys'] = [
+//const Hulls2: TupleUnion<keyof HullSchema>[0][] = [
+const Hulls2: HullSchemaKeys[] = [
+  ['Lorem Ipsum 1', 100],
+  ['Lorem Ipsum 2', 250],
+];
+Hulls2.forEach((hull: HullSchemaKeys) => Hull(hull[0], hull[1]));
+console.log("Hulls:", Hulls);
+console.log("Hulls:", JSON.stringify(Hulls));
+
+//let Bbbbb :keyof Hull;
+//let myRegmyReg: Bbbbb = {name: 'Lorem Ipsum 1', cost: 100222222};
+//console.log(myRegmyReg);
+
